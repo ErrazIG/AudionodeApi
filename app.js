@@ -1,9 +1,16 @@
 import 'dotenv/config';
 import express from "express";
 import morgan from 'morgan';
+import db from './models/index.js';
 
 //Accessibilité aux variables d'env
 const { NODE_ENV, PORT } = process.env;
+
+
+//DB Connection
+db.sequelize.authenticate()
+    .then(() => console.log('Connection wit Database has been established successfully.'))
+    .catch(err => console.error('Unable to connect to the database:', err));
 
 //WEB API
 //Initialisation
