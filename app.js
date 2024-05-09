@@ -12,6 +12,10 @@ db.sequelize.authenticate()
     .then(() => console.log('Connection wit Database has been established successfully.'))
     .catch(err => console.error('Unable to connect to the database:', err));
 
+    if (NODE_ENV === 'dev') {
+        // db.sequelize.sync({ alter: { drop: false} });
+    }
+
 //WEB API
 //Initialisation
 const app = express();
