@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from "express";
 import morgan from 'morgan';
 import db from './models/index.js';
+import mainRouter from './routes/index.js';
 
 //Accessibilité aux variables d'env
 const { NODE_ENV, PORT } = process.env;
@@ -25,7 +26,7 @@ app.use(express.json());
 app.use(morgan('short'));
 
 //Routing
-
+app.use('/api', mainRouter);
 //Lancement du serv
 app.listen(PORT, () => {
     console.log(`Web API is running on ${PORT} (${NODE_ENV})`);
